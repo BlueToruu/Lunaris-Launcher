@@ -1,5 +1,5 @@
 /**
- * @author Luuxis
+ * @author Darken
  * @license CC-BY-NC 4.0 - https://creativecommons.org/licenses/by-nc/4.0
  */
 import { config, database, logger, changePanel, appdata, setStatus, pkg, popup } from '../utils.js'
@@ -29,16 +29,16 @@ class Home {
                     <div class="news-header">
                         <img class="server-status-icon" src="assets/images/icon.png">
                         <div class="header-text">
-                            <div class="title">Aucun news n'ai actuellement disponible.</div>
+                            <div class="title">No hay noticias disponibles actualmente.</div>
                         </div>
                         <div class="date">
-                            <div class="day">1</div>
-                            <div class="month">Janvier</div>
+                            <div class="day">25</div>
+                            <div class="month">Abril</div>
                         </div>
                     </div>
                     <div class="news-content">
                         <div class="bbWrapper">
-                            <p>Vous pourrez suivre ici toutes les news relative au serveur.</p>
+                            <p>Puedes seguir todas las novedades relativas al servidor aquí.</p>
                         </div>
                     </div>`
                 newsElement.appendChild(blockNews);
@@ -77,13 +77,13 @@ class Home {
                             <div class="title">Error.</div>
                         </div>
                         <div class="date">
-                            <div class="day">1</div>
-                            <div class="month">Janvier</div>
+                            <div class="day">25</div>
+                            <div class="month">Abril</div>
                         </div>
                     </div>
                     <div class="news-content">
                         <div class="bbWrapper">
-                            <p>Impossible de contacter le serveur des news.</br>Merci de vérifier votre configuration.</p>
+                            <p>No se puede contactar con el servidor de noticias.</br>Por favor verifique su configuración.</p>
                         </div>
                     </div>`
             newsElement.appendChild(blockNews);
