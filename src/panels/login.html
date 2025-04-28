@@ -1,18 +1,30 @@
 <div class="container">
-    <div class="login-home login-tabs">
-        <div class="login-text">Por favor identifícate para jugar.</div>
+    <!-- Nueva pantalla de selección -->
+    <div class="login-select login-tabs">
+        <div class="login-text">¿Cómo quieres iniciar sesión?</div>
 
         <div class="login-options">
-            <button class="connect connect-home">Conectar</button>
-            <button class="cancel cancel-home"  style="display: none;">Cancelar</button>
+            <button class="connect select-microsoft">Microsoft</button>
+            <button class="connect select-offline">Offline</button>
         </div>
     </div>
 
+    <!-- Inicio de sesión Microsoft -->
+    <div class="login-home login-tabs">
+        <div class="login-text">Por favor identifícate con Microsoft para jugar.</div>
+
+        <div class="login-options">
+            <button class="connect connect-home">Conectar</button>
+            <button class="cancel cancel-home" style="display: none;">Cancelar</button>
+        </div>
+    </div>
+
+    <!-- Inicio de sesión Offline -->
     <div class="login-offline login-tabs">
         <div class="login-text">Por favor ingresa tu nick</div>
 
         <div class="input-login">
-            <input type="text" class="email email-offline" placeholder="nombre" />
+            <input type="text" class="email email-offline" placeholder="nombre de usuario..." />
         </div>
 
         <div class="login-options">
@@ -21,6 +33,7 @@
         </div>
     </div>
 
+    <!-- Inicio de sesión AZAuth (sin cambios) -->
     <div class="login-AZauth login-tabs">
         <div class="login-text">Por favor inicia sesión para jugar.</div>
 
@@ -35,11 +48,12 @@
         </div>
     </div>
 
+    <!-- AZAuth 2FA -->
     <div class="login-AZauth-A2F login-tabs">
         <div class="login-text">Por favor introduce el código de seguridad.</div>
 
         <div class="input-login">
-            <input type="text" class="A2F A2F-AZauth" placeholder="Code" />
+            <input type="text" class="A2F A2F-AZauth" placeholder="Código de seguridad" />
         </div>
 
         <div class="login-options">
