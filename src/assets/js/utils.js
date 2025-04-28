@@ -18,7 +18,7 @@ import slider from './utils/slider.js';
 async function setBackground(theme) {
     let body = document.body;
     body.className = theme ? 'dark global' : 'light global';
-    let backgroundPath = './assets/images/background/dark/1.png';
+    let backgroundPath = './assets/images/background/dark/1.gif';
     body.style.backgroundImage = `linear-gradient(#00000000, #00000080), url(${backgroundPath})`;
     body.style.backgroundSize = 'cover';
 }

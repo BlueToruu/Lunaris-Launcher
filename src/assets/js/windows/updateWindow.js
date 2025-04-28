@@ -1,8 +1,3 @@
-/**
- * @author Darken
- * @license CC-BY-NC 4.0 - https://creativecommons.org/licenses/by-nc/4.0
- */
-
 "use strict";
 const { app, BrowserWindow, Menu } = require("electron");
 const path = require("path");
@@ -27,9 +22,11 @@ function createWindow() {
         width: 400,
         height: 500,
         resizable: false,
-        icon: `./src/assets/images/icon.${os.platform() === "win32" ? "ico" : "png"}`,
+        transparent: true, // Hacemos la ventana transparente
         frame: false,
         show: false,
+        icon: `./src/assets/images/icon.${os.platform() === "win32" ? "ico" : "png"}`,
+        backgroundColor: '#00000000', // Fondo completamente transparente
         webPreferences: {
             contextIsolation: false,
             nodeIntegration: true
@@ -40,7 +37,7 @@ function createWindow() {
     updateWindow.loadFile(path.join(`${app.getAppPath()}/src/index.html`));
     updateWindow.once('ready-to-show', () => {
         if (updateWindow) {
-            if (dev) updateWindow.webContents.openDevTools({ mode: 'detach' })
+            if (dev) updateWindow.webContents.openDevTools({ mode: 'detach' });
             updateWindow.show();
         }
     });
