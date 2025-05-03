@@ -1,7 +1,7 @@
 {
     "name": "Lunaris-Launcher",
     "preductName": "Lunaris Launcher",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Launcher ofcial de Lunaris Studio",
     "main": "src/app.js",
     "author": {
