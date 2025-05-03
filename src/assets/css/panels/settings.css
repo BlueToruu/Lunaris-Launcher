@@ -234,7 +234,7 @@
     display: block;
     width: 20px;
     height: 10px;
-    background: #bbb;
+    background: #696969;
     border: 4px solid var(--element-color);
     transition: background-color .2s, border .2s;
     border-radius: 18px;
@@ -281,31 +281,6 @@
     color: var(--color);
 }
 
-.java-path-input-text {
-    background: var(--shadow);
-    border: none;
-    color: var(--color);
-    padding: 0.5rem 1rem;
-    border-radius: 15px;
-    width: 50%;
-}
-
-.java-path-input-file {
-    display: none;
-}
-
-.java-path-box {
-    display: flex;
-    align-items: center;
-}
-
-.java-path-btn {
-    padding: 0.3rem 1rem;
-    background: var(--element-color);
-    border-radius: 15px;
-    margin: 0 1rem;
-    cursor: pointer;
-}
 
 /*******************************************************************************
  *                                                                             *
@@ -338,7 +313,7 @@
 
 .size-btn {
     padding: 0.3rem 1rem;
-    background: var(--element-color);
+    background: rgba(128, 128, 128, 0.5); /* Gris medio transparente */
     border-radius: 15px;
     margin: 0 1rem;
     cursor: pointer;
@@ -410,4 +385,9 @@
 
 .active-close {
     border: 4px solid var(--element-color);
+}
+
+.active-settings-BTN {
+    background: rgba(128, 128, 128, 0.5); /* Gris medio transparente */
+    color: white; /* Contraste, opcional */
 }

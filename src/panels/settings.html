@@ -3,9 +3,9 @@
         <p>Ajustes</p>
         <div class="nav-box">
             <div id="account" class="nav-settings-btn active-settings-BTN">Cuentas</div>
-            <div id="java" class="nav-settings-btn">JAVA</div>
-            <div id="resolution" class="nav-settings-btn">RESOLUTION</div>
-            <div id="launcher" class="nav-settings-btn">LAUNCHER</div>
+            <div id="java" class="nav-settings-btn">RAM</div>
+            <div id="resolution" class="nav-settings-btn">Resolución</div>
+            <div id="launcher" class="nav-settings-btn">Launcher Info</div>
             <div id="save" class="nav-settings-btn">Cerrar</div>
         </div>
     </div>
@@ -39,36 +39,18 @@
             <div class="settings-elements content-evenly">
                 <div class="memory-slider" min="0.5" max="8" step="0.5">
                     <div class="slider-touch-left">
-                        <span value="0 Go"></span>
+                        <span value="0 GB"></span>
                     </div>
                     <div class="slider-touch-right">
-                        <span value="0 Go"></span>
+                        <span value="0 GB"></span>
                     </div>
                     <div class="slider-line">
                         <span></span>
                     </div>
                 </div>
                 <div class="ram-info-block">
-                    <b>Vous possédez un total de <span id="total-ram">0 Go</span> RAM.</b><br>
-                    <b>Vous possédez un total de <span id="free-ram">0 Go</span> RAM disponible.</b>
-                </div>
-            </div>
-        </div>
-
-        <div class="titre-tab">Emplacement de Java</div>
-        <div class="settings-elements-box">
-            <div class="setting-text">
-                El launcher utiliza una versión integrada de Java.<br>
-                Esta versión está disponible en el directorio :<br><span class="java-path-txt"></span><br>
-                Sin embargo, puedes especificar tu propio ejecutable si tu juego requiere una versión superior de Java.
-                reciente.
-            </div>
-            <div class="settings-elements content-evenly">
-                <input type="text" class="java-path-input-text" disabled>
-                <input type="file" class="java-path-input-file" accept="application/octet-stream" />
-                <div class="java-path-box">
-                    <div class="java-path-set java-path-btn">Changer</div>
-                    <div class="java-path-reset java-path-btn">Par defaut</div>
+                    <b>Tienes un total de <span id="total-ram">0 GB</span> de RAM.</b><br>
+                    <b>Tienes un total de <span id="free-ram">0 GB</span> de RAM disponible.</b>
                 </div>
             </div>
         </div>

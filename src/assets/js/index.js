@@ -33,7 +33,8 @@ class Splash {
             { "message": "VEGETA777?", "author": "Darken" },
             { "message": "Lunaris x Maple!", "author": "Darken" },
             { "message": "Optimizen MINECRAFT JAVA!!.", "author": "Darken" },
-            { "message": "Estamos en el espacio?!", "author": "Darken" }
+            { "message": "Estamos en el espacio?!", "author": "Darken" },
+            { "message": "NO NO NOOO EL LAUNCHER NOOO", "author": "Darken" }
         ];
         let splash = splashes[Math.floor(Math.random() * splashes.length)];
         this.splashMessage.textContent = splash.message;

@@ -75,7 +75,7 @@ async function setStatus(opt) {
 
     if (!opt) {
         statusServerElement.classList.add('red')
-        statusServerElement.innerHTML = `Ferme - 0 ms`
+        statusServerElement.innerHTML = `ping - 0 ms`
         document.querySelector('.status-player-count').classList.add('red')
         playersOnline.innerHTML = '0'
         return
@@ -89,11 +89,11 @@ async function setStatus(opt) {
     if (!statusServer.error) {
         statusServerElement.classList.remove('red')
         document.querySelector('.status-player-count').classList.remove('red')
-        statusServerElement.innerHTML = `En ligne - ${statusServer.ms} ms`
+        statusServerElement.innerHTML = `En linea - ${statusServer.ms} ms`
         playersOnline.innerHTML = statusServer.playersConnect
     } else {
         statusServerElement.classList.add('red')
-        statusServerElement.innerHTML = `Ferme - 0 ms`
+        statusServerElement.innerHTML = `ping - 0 ms`
         document.querySelector('.status-player-count').classList.add('red')
         playersOnline.innerHTML = '0'
     }
