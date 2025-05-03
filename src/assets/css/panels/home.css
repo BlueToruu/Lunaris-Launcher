@@ -208,41 +208,6 @@
     pointer-events: none;
 }
 
-.play-elements {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed; /* Fijo en pantalla */
-    bottom: 20px; /* Distancia desde el fondo */
-    left: 50%; /* Centrado horizontalmente */
-    transform: translateX(-50%); /* Ajuste para centrar realmente */
-    z-index: 999; /* Asegura que quede por encima */
-    width: auto; /* Opcional: puedes fijar el ancho si necesitas */
-}
-
-
-
-.play-instance {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    border: solid 3px var(--element-color);
-    border-radius: 15px;
-    height: 3.2rem;
-    padding-right: 1.9rem;
-}
-
-.play-btn {
-    border: none;
-    border-radius: 10px;
-    background: none;
-    color: var(--color);
-    font-size: 2rem;
-    font-weight: bolder;
-    padding: 0 1.5rem;
-    pointer-events: none;
-}
 
 .instance-select {
     display: flex;
@@ -414,4 +379,47 @@
     font-size: 3rem;
     color: var(--element-color);
     margin: 0 1.5rem 10px 1.5rem; /* Ajusta según lo necesites */
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * PlayButoon                                                          *
+ *                                                                             *
+ ******************************************************************************/
+
+ .play-elements {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed; /* Fijo en pantalla */
+    bottom: 20px; /* Distancia desde el fondo */
+    left: 50%; /* Centrado horizontalmente */
+    transform: translateX(-50%); /* Ajuste para centrar realmente */
+    z-index: 2; /* Asegura que quede por encima */
+    width: auto; /* Opcional: puedes fijar el ancho si necesitas */
+}
+
+
+
+.play-instance {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    border: solid 3px var(--element-color);
+    border-radius: 15px;
+    height: 3.2rem;
+    padding-right: 1.9rem;
+}
+
+.play-btn {
+    border: none;
+    border-radius: 10px;
+    background: none;
+    color: var(--color);
+    font-size: 2rem;
+    font-weight: bolder;
+    padding: 0 1.5rem;
+    pointer-events: none;
+    
 }

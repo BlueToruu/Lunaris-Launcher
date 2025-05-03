@@ -30,7 +30,6 @@ class Splash {
 
     async startAnimation() {
         let splashes = [
-            { "message": "VEGETA777?", "author": "Darken" },
             { "message": "Lunaris x Maple!", "author": "Darken" },
             { "message": "Optimizen MINECRAFT JAVA!!.", "author": "Darken" },
             { "message": "Estamos en el espacio?!", "author": "Darken" },
