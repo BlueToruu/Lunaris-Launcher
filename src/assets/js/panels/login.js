@@ -10,114 +10,101 @@ class Login {
         this.config = config;
         this.db = new database();
 
-        // Mostrar pantalla de selección de login
         document.querySelector('.login-select').style.display = 'block';
 
-        // Botones de selección
+        // Mostrar Microsoft
         document.querySelector('.select-microsoft').addEventListener('click', () => {
-            this.showMicrosoftLogin();
+            this.showPanel('.login-home');
         });
 
+        // Mostrar Offline
         document.querySelector('.select-offline').addEventListener('click', () => {
-            this.showOfflineLogin();
+            this.showPanel('.login-offline');
         });
 
-        document.querySelector('.cancel-home').addEventListener('click', () => {
-            document.querySelector('.cancel-home').style.display = 'none';
-            changePanel('settings');
+        // Botón volver (ambos usan la misma clase 'back-button')
+        document.querySelectorAll('.back-button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                this.showPanel('.login-select');
+            });
         });
+
+        // Botón login Microsoft
+        document.querySelector('.connect-home').addEventListener('click', () => this.getMicrosoft());
+
+        // Botón login Offline
+        document.querySelector('.connect-offline').addEventListener('click', () => this.getCrack());
     }
 
-    // Mostrar login de Microsoft
-    showMicrosoftLogin() {
-        document.querySelector('.login-select').style.display = 'none';
-        this.getMicrosoft();
-    }
-
-    // Mostrar login de Nick offline
-    showOfflineLogin() {
-        document.querySelector('.login-select').style.display = 'none';
-        this.getCrack();
+    showPanel(selector) {
+        document.querySelectorAll('.login-tabs').forEach(tab => {
+            tab.style.display = 'none';
+        });
+        document.querySelector(selector).style.display = 'block';
     }
 
     async getMicrosoft() {
-        console.log('Initializing Microsoft login...');
+        console.log('Login Microsoft iniciado');
         let popupLogin = new popup();
-        let loginHome = document.querySelector('.login-home');
-        let microsoftBtn = document.querySelector('.connect-home');
-        loginHome.style.display = 'block';
 
-        microsoftBtn.addEventListener("click", () => {
-            popupLogin.openPopup({
-                title: 'Conectando',
-                content: 'Espere por favor...',
-                color: 'var(--color)'
-            });
-
-            ipcRenderer.invoke('Microsoft-window', this.config.client_id).then(async account_connect => {
-                if (account_connect == 'cancel' || !account_connect) {
-                    popupLogin.closePopup();
-                    return;
-                } else {
-                    await this.saveData(account_connect);
-                    popupLogin.closePopup();
-                }
-
-            }).catch(err => {
-                popupLogin.openPopup({
-                    title: 'Error',
-                    content: err,
-                    options: true
-                });
-            });
+        popupLogin.openPopup({
+            title: 'Conectando',
+            content: 'Espere por favor...',
+            color: 'var(--color)'
         });
+
+        try {
+            const account_connect = await ipcRenderer.invoke('Microsoft-window', this.config.client_id);
+            if (account_connect && account_connect !== 'cancel') {
+                await this.saveData(account_connect);
+            }
+        } catch (err) {
+            popupLogin.openPopup({
+                title: 'Error',
+                content: err,
+                options: true
+            });
+        }
+
+        popupLogin.closePopup();
     }
 
     async getCrack() {
-        console.log('Initializing offline login...');
+        console.log('Login Offline iniciado');
         let popupLogin = new popup();
-        let loginOffline = document.querySelector('.login-offline');
+        let email = document.querySelector('.email-offline').value;
 
-        let emailOffline = document.querySelector('.email-offline');
-        let connectOffline = document.querySelector('.connect-offline');
-        loginOffline.style.display = 'block';
+        if (email.length < 3) {
+            popupLogin.openPopup({
+                title: 'Error',
+                content: 'Tu Nick debe tener al menos 3 caracteres.',
+                options: true
+            });
+            return;
+        }
 
-        connectOffline.addEventListener('click', async () => {
-            if (emailOffline.value.length < 3) {
-                popupLogin.openPopup({
-                    title: 'Error',
-                    content: 'Tu Nick debe tener al menos 3 caracteres.',
-                    options: true
-                });
-                return;
-            }
+        if (email.match(/ /g)) {
+            popupLogin.openPopup({
+                title: 'Error',
+                content: 'Tu Nick no debe contener espacios.',
+                options: true
+            });
+            return;
+        }
 
-            if (emailOffline.value.match(/ /g)) {
-                popupLogin.openPopup({
-                    title: 'Error',
-                    content: 'Tu Nick no debe contener espacios.',
-                    options: true
-                });
-                return;
-            }
+        let MojangConnect = await Mojang.login(email);
 
-            let MojangConnect = await Mojang.login(emailOffline.value);
+        if (MojangConnect.error) {
+            popupLogin.openPopup({
+                title: 'Error',
+                content: MojangConnect.message,
+                options: true
+            });
+            return;
+        }
 
-            if (MojangConnect.error) {
-                popupLogin.openPopup({
-                    title: 'Error',
-                    content: MojangConnect.message,
-                    options: true
-                });
-                return;
-            }
-            await this.saveData(MojangConnect);
-            popupLogin.closePopup();
-        });
-    }
-
-    async getAZauth() {
-        // Tu función AZauth sigue igual, sin cambios
+        await this.saveData(MojangConnect);
+        popupLogin.closePopup();
     }
 
     async saveData(connectionData) {
@@ -129,13 +116,11 @@ class Login {
 
         for (let instance of instancesList) {
             if (instance.whitelistActive) {
-                let whitelist = instance.whitelist.find(whitelist => whitelist == account.name);
-                if (whitelist !== account.name) {
-                    if (instance.name == instanceSelect) {
-                        let newInstanceSelect = instancesList.find(i => i.whitelistActive == false);
-                        configClient.instance_selct = newInstanceSelect.name;
-                        await setStatus(newInstanceSelect.status);
-                    }
+                let whitelist = instance.whitelist.find(name => name == account.name);
+                if (!whitelist && instance.name == instanceSelect) {
+                    let newInstance = instancesList.find(i => !i.whitelistActive);
+                    configClient.instance_selct = newInstance.name;
+                    await setStatus(newInstance.status);
                 }
             }
         }
